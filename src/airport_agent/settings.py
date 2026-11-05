@@ -22,10 +22,10 @@ class Settings(BaseSettings):
     oag_api_key: SecretStr | None = Field(default=None, alias="OAG_API_KEY")
     anthropic_api_key: SecretStr | None = Field(default=None, alias="ANTHROPIC_API_KEY")
     openrouter_api_key: SecretStr | None = Field(default=None, alias="OPENROUTER_API_KEY")
-    llm_provider: str = Field(default="openrouter", alias="LLM_PROVIDER")      # openrouter | anthropic
-    openrouter_model: str = Field(default="anthropic/claude-opus-5.5", alias="OPENROUTER_MODEL")
+    llm_provider: str = Field(default="anthropic", alias="LLM_PROVIDER")       # anthropic (default) | openrouter
+    openrouter_model: str = Field(default="anthropic/claude-opus-5.5", alias="OPENROUTER_MODEL")  # OpenRouter option; ID not re-verified
 
-    claude_model: str = "claude-opus-5-5"
+    claude_model: str = "claude-haiku-5-5"      # the configured model (README, ARCHITECTURE §7, DESIGN §4)
     cache_dir_override: Path | None = Field(default=None, alias="AIRPORT_AGENT_CACHE_DIR")  # used by e2e tests
     data_dir: Path = PROJECT_ROOT / "data"
     config_dir: Path = PROJECT_ROOT / "config"

@@ -53,25 +53,33 @@ The four constraint signals:
 
 ```mermaid
 flowchart TD
-    U["understand_request<br/>(Claude)"] -->|needs data| A["resolve_airports"]
-    U -->|out of scope, or unreadable<br/>after 1 retry| R["respond"]
-    U -->|methodology question, or<br/>follow-up on the same results| P["prepare_results"]
-    U -->|follow-up that only changes<br/>scoring parameters| S["score_and_rank"]
-    A -->|all airports resolved| G["get_data<br/>coverage checks; long haul:<br/>OAG, BTS as backup"]
-    A -->|some unresolved| D["disambiguate_airports<br/>(Claude)"]
-    D -->|chosen and checked| G
-    D -->|user must choose| R
-    G --> M["compute_metrics"]
-    M -->|score needed| S
-    M -->|no score needed| P
-    S --> P
-    P -->|"why" or external-fact question| W["web_context<br/>(Claude web search)"]
-    P -->|other questions| E["explain<br/>(Claude)"]
-    W --> E
-    E --> O["output_guard"]
-    O -->|numbers grounded| R
-    O -->|not grounded: retry once| E
-    O -->|not grounded twice:<br/>template answer| R
+    start([Question]) --> understand_request["understand_request<br/>Claude: parse the question"]
+    understand_request -- "out of scope, not understood, or needs a clarification" --> respond["respond"]
+    understand_request -- "conceptual or methodology" --> prepare_results["prepare_results<br/>facts from config; no data"]
+    understand_request -- "research: a place is named" --> resolve_airports["resolve_airports"]
+    understand_request -- "research: no place" --> prepare_results
+    understand_request -- "follow-up that changes only scoring parameters" --> score_and_rank["score_and_rank<br/>no data fetched"]
+    understand_request -- "follow-up that reuses stored results" --> prepare_results
+    understand_request -- "new airport or ranking question" --> resolve_airports
+    resolve_airports -- "an airport name is unresolved" --> disambiguate_airports["disambiguate_airports<br/>Claude picks a candidate or asks"]
+    resolve_airports -- "research" --> prepare_results
+    resolve_airports -- "all resolved" --> get_data["get_data<br/>public data; OAG or BTS for long haul"]
+    resolve_airports -- "clarification" --> respond
+    disambiguate_airports -- "candidate chosen" --> get_data
+    disambiguate_airports -- "research" --> prepare_results
+    disambiguate_airports -- "user must choose" --> respond
+    get_data --> compute_metrics["compute_metrics<br/>deterministic"]
+    compute_metrics -- "ranking" --> score_and_rank
+    compute_metrics -- "comparison, metric, or why" --> prepare_results
+    score_and_rank --> prepare_results
+    prepare_results -- "web research: external facts, or a why question" --> web_context["web_context<br/>Claude with web search"]
+    prepare_results -- "otherwise" --> explain["explain<br/>Claude writes the answer"]
+    web_context --> explain
+    explain --> output_guard["output_guard<br/>numbers, airports, comparisons, sections"]
+    output_guard -- "checks pass" --> respond
+    output_guard -- "checks fail, first time: rewrite" --> explain
+    output_guard -- "checks fail again: fixed-format fallback" --> respond
+    respond --> stop([Answer])
 ```
 
 **Scope:** any US airport, state, Census region or division, or the whole country; airports can be ranked by renovation potential (the default) or by any single measure (size, congestion, growth, a signal, delays), highest or lowest first.

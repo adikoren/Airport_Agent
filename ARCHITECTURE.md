@@ -69,22 +69,15 @@ The provided files were used to **find out which measures are possible, and to t
 
 ## 3. Architecture at a glance
 
-```
-┌────────────────┐   ┌─────────────────────────── LangGraph agent (11 nodes) ───────────────────────────┐
-│ Chat UI        │   │  Claude (LLM) nodes: understand_request · disambiguate_airports ·                │
-│ (Streamlit,    │◄─►│                      web_context · explain                                       │
-│ optional voice)│   │  Code nodes: resolve_airports · get_data · compute_metrics · score_and_rank ·    │
-└────────────────┘   │              prepare_results · output_guard · respond                            │
-                     │  Checkpointer (SQLite) = conversation memory for follow-ups                      │
-                     └──────────────┬───────────────────────────────────────────────────────────────────┘
-                                    │ deterministic tools (pure Python, unit-tested)
-       ┌──────────────────┬─────────┼──────────────────┬───────────────────┬─────────────────────┐
-       ▼                  ▼         ▼                  ▼                   ▼                     ▼
-  airport resolver    OAG client  public data store  metrics / scoring   output guard        web search
-  (reference table,   (schedules, (BTS T-100, BTS    (signals, C, RPS,   (number check,      (Claude server
-   aliases, regions)   status)     on-time, FAA TAF)  ranges)             template answer)    tool; "why" only)
-                         │
-                    disk cache + call budget + audit log
+```mermaid
+flowchart LR
+    UI["Chat UI (Streamlit)<br/>question at the top, newest first,<br/>execution details per answer"] <--> AG["LangGraph agent<br/>11 nodes (§4.1)"]
+    AG --> TOOLS["Deterministic tools<br/>resolver, metrics, RPS scoring,<br/>facts, output guard"]
+    AG --> LLM["Claude (Anthropic API)<br/>parse, disambiguate, web research, explain"]
+    LLM --> WEB["Web search tool<br/>(used inside the Claude call)"]
+    TOOLS --> LOCAL["Local data<br/>BTS T-100 and on-time, FAA TAF,<br/>airport reference (built once)"]
+    TOOLS --> OAG["OAG API<br/>long-haul share: one schedule day, cached"]
+    AG --> MEM["Memory<br/>SQLite checkpointer for follow-ups;<br/>audit log per turn"]
 ```
 
 **Principle: Claude decides *what* is being asked and *how to say* the answer; code computes every number from the data. Web sources supply only the external facts they state, with their source and date.**
@@ -97,25 +90,33 @@ The provided files were used to **find out which measures are possible, and to t
 
 ```mermaid
 flowchart TD
-    U["understand_request<br/>(Claude)"] -->|needs data| A["resolve_airports"]
-    U -->|out of scope, or unreadable<br/>after 1 retry| R["respond"]
-    U -->|methodology question, or<br/>follow-up on the same results| P["prepare_results"]
-    U -->|follow-up that only changes<br/>scoring parameters| S["score_and_rank"]
-    A -->|all airports resolved| G["get_data<br/>coverage checks; long haul:<br/>OAG, BTS as backup"]
-    A -->|some unresolved| D["disambiguate_airports<br/>(Claude)"]
-    D -->|chosen and checked| G
-    D -->|user must choose| R
-    G --> M["compute_metrics"]
-    M -->|score needed| S
-    M -->|no score needed| P
-    S --> P
-    P -->|"why" or external-fact question| W["web_context<br/>(Claude web search)"]
-    P -->|other questions| E["explain<br/>(Claude)"]
-    W --> E
-    E --> O["output_guard"]
-    O -->|numbers grounded| R
-    O -->|not grounded: retry once| E
-    O -->|not grounded twice:<br/>template answer| R
+    start([Question]) --> understand_request["understand_request<br/>Claude: parse the question"]
+    understand_request -- "out of scope, not understood, or needs a clarification" --> respond["respond"]
+    understand_request -- "conceptual or methodology" --> prepare_results["prepare_results<br/>facts from config; no data"]
+    understand_request -- "research: a place is named" --> resolve_airports["resolve_airports"]
+    understand_request -- "research: no place" --> prepare_results
+    understand_request -- "follow-up that changes only scoring parameters" --> score_and_rank["score_and_rank<br/>no data fetched"]
+    understand_request -- "follow-up that reuses stored results" --> prepare_results
+    understand_request -- "new airport or ranking question" --> resolve_airports
+    resolve_airports -- "an airport name is unresolved" --> disambiguate_airports["disambiguate_airports<br/>Claude picks a candidate or asks"]
+    resolve_airports -- "research" --> prepare_results
+    resolve_airports -- "all resolved" --> get_data["get_data<br/>public data; OAG or BTS for long haul"]
+    resolve_airports -- "clarification" --> respond
+    disambiguate_airports -- "candidate chosen" --> get_data
+    disambiguate_airports -- "research" --> prepare_results
+    disambiguate_airports -- "user must choose" --> respond
+    get_data --> compute_metrics["compute_metrics<br/>deterministic"]
+    compute_metrics -- "ranking" --> score_and_rank
+    compute_metrics -- "comparison, metric, or why" --> prepare_results
+    score_and_rank --> prepare_results
+    prepare_results -- "web research: external facts, or a why question" --> web_context["web_context<br/>Claude with web search"]
+    prepare_results -- "otherwise" --> explain["explain<br/>Claude writes the answer"]
+    web_context --> explain
+    explain --> output_guard["output_guard<br/>numbers, airports, comparisons, sections"]
+    output_guard -- "checks pass" --> respond
+    output_guard -- "checks fail, first time: rewrite" --> explain
+    output_guard -- "checks fail again: fixed-format fallback" --> respond
+    respond --> stop([Answer])
 ```
 
 **A normal turn, in words:** Claude reads the question → code finds the airports (Claude helps only if a name is ambiguous) → code gets the data → code computes the metrics and, if needed, the score → code collects the facts → for "why" questions and external facts, Claude adds web context with its sources → Claude writes the answer → code checks every number → the answer is sent.
@@ -470,6 +471,7 @@ Airport lookup, regions, data fetching and fallback, checks and caveats, all met
 ### 7.4 Implementation notes
 - The official `anthropic` SDK is used inside the LangGraph nodes (`llm/client.py`); calls go to `api.anthropic.com`, with the key from `ANTHROPIC_API_KEY`.
 - **Structured answers:** `client.messages.parse` with the Pydantic model, so the output is validated by the SDK.
+- **Timeout:** each model call gives up after 60 seconds (`LLM_TIMEOUT_SECONDS`), with no SDK retries; the understanding step retries once in the app. A timeout is reported as "no answer within 60 seconds", and the turn always finishes.
 - **Effort:** set explicitly on every call (`output_config={"effort": ...}`). No thinking budget is set.
 - **Web search tool by model:** Haiku 5.5 uses the basic version (`web_search_20250305`). The Anthropic docs (checked 2026-11-05) list `claude-haiku-5-5` as supporting web search, and the filtered version (`web_search_20260209`, dynamic filtering) as documented for Opus, Sonnet and Sonnet 4.6, not for Haiku. `web_search_tool(model)` picks the version from the model name, so a model change keeps working. Not yet run live.
 - **Refusals:** the call checks `stop_reason`; a refusal is treated as "no answer", so the fixed reply or the template answer is used.- **API errors** (no credit, a rejected key, rate limit, no connection) are named in plain words and reach the user as a message that says the question is fine, not that it needs rephrasing.
@@ -485,7 +487,7 @@ Airport lookup, regions, data fetching and fallback, checks and caveats, all met
 | Claude outputs | Pydantic schemas, enums, candidate-only choices, 1 retry, then a fixed reply or the template answer |
 | Numbers | Only code computes numbers; `output_guard` rejects any number not in `facts` |
 | Data | Null not zero; sum over sum; same months for year-over-year; ≥ 30 flights per mean; physically possible values only; codeshare copies dropped; join by airport ID |
-| Tools / APIs | Timeouts; retries per each API's documentation; a failing source is marked down for the turn; call budget; cache; OAG key only to the OAG host; keys only from `.env`, never logged |
+| Tools / APIs | Timeouts (model calls: 60 s, no SDK retries); retries per each API's documentation; a failing source is marked down for the turn; call budget; cache; OAG key only to the OAG host; keys only from `.env`, never logged |
 | Loops | No data loop; one `explain` retry; graph step limit; at most 6 Claude calls per turn by construction |
 | Answer content | Mandatory *Assumptions & uncertainty* section; source and period on every number; "screening signal, not investment advice"; web content shown with its source and date, never as the agent's own data |
 | Untrusted content | API and web text treated as data, never as instructions |
@@ -527,7 +529,7 @@ Airport lookup, regions, data fetching and fallback, checks and caveats, all met
 ```
 Wonderful- FDE/
 ├── ARCHITECTURE.md  PLAN.md  README.md
-├── .env.example                 # OAG_API_KEY=, ANTHROPIC_API_KEY=  (the real .env is git-ignored)
+├── .env.example                 # ANTHROPIC_API_KEY=, OAG_API_KEY= (optional), LLM settings (the real .env is git-ignored)
 ├── pyproject.toml
 ├── config/
 │   ├── scoring.yaml             # every scoring number (listed in §6.9)
@@ -554,6 +556,6 @@ Wonderful- FDE/
 │   ├── tools/   public_store.py  checks.py  metrics.py  scoring.py  resolve.py
 │   │            oag_client.py  facts.py  output_guard.py
 │   ├── llm/     client.py (Anthropic, default)  openrouter.py (option)  schemas.py  prompts/*.md  fake.py (offline tests)
-│   └── ui/      app.py
+│   └── ui/      app.py  trace.py  (per-answer execution details)
 └── tests/   unit/  graph/  heldout/  e2e/ (Playwright)  golden/transcripts/  fixtures/
 ```

@@ -207,7 +207,7 @@ The real Streamlit app, started on a free port with its own temporary cache, dri
   - every test fails on any browser console error
 - **Live (`RUN_LIVE_E2E=1`, about a minute):** the same flow with the real Claude; the draft must pass the number check without the template.
 
-## 5c. Module changes (this round: scope, flags, last-resort lookup, model switch)
+## 5c. Module changes (earlier round: scope, flags, gap lookup, model switch)
 
 Each row says what changed, why, and the test that covers it. "Config" = a file in `config/`.
 
@@ -231,7 +231,7 @@ Each row says what changed, why, and the test that covers it. "Config" = a file 
 | `tools/output_guard.py` | Number and airport checks by answer mode; web-status claims must match the search that ran; template for rankings, flags, the labeled web section | Grounding per answer type; no false claims about searches | test_answer_modes, test_metrics_scoring (template) |
 | `tools/facts.py` | `answer_mode` on every facts bundle (computed, conceptual, research, methodology); `score_formula_not_used` in computed facts | Answer-mode validation | test_answer_modes |
 | `tools/scoring.py` | `drivers(...)` returns C, percentiles, signals, growth and caveats for an airport; no RPS | "Why" answers without a score | test_answer_modes (why does not compute RPS) |
-| `ui/app.py` | Chat box disabled while answering; "For: <question>" in the side panel; signals column; errors not shown as "rephrase"; example questions from config | Browser-tested behaviour | e2e (12 tests, stable over 8 runs) |
+| `ui/app.py`, `ui/trace.py` | Current UI: question form at the top (each question is queued once), newest pair first, a "How this answer was built" panel under every answer (built by `trace.py` from the turn's own updates). Earlier side panel replaced | Browser-tested behaviour | e2e (12 tests, stable over 8 runs) |
 | `scripts/build_bts_aggregates.py` | T-100 from the data.bts.gov API (same dataset as the file; verified identical), file as fallback | No manual download needed | build check |
 | `config/regions.yaml` | `national` names (incl. "US states"), `ignore_words` | Scope wording | test_scope |
 | `config/answer_text.yaml` | Example questions; assumptions text | Moved out of code (place names) | test_rules (no place names in code) |

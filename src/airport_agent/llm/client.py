@@ -22,6 +22,12 @@ EFFORT = {"understand": "low", "disambiguate": "low", "web_context": "low", "exp
 
 WEB_PROMPTS = {"web_context", "web_lookup"}
 
+# A model call that does not answer within this many seconds fails with a clear message instead of leaving the chat
+# busy. The SDK default is 600 s with two retries; that is far too long for a chat turn. The understanding step
+# already retries once in the app, so the SDK does not retry on top of it.
+LLM_TIMEOUT_SECONDS = 60.0
+LLM_SDK_RETRIES = 0
+
 
 def prompt(name: str) -> str:
     """A system prompt. Web prompts share one provenance file, so the rules cannot drift apart."""
@@ -48,7 +54,8 @@ class Claude:
                 raise ClaudeUnavailable("ANTHROPIC_API_KEY is not set (add it to .env)")
             # base_url pinned, so an ANTHROPIC_BASE_URL left in the shell can't redirect the app's calls
             self.client = anthropic.Anthropic(api_key=s.anthropic_api_key.get_secret_value(),
-                                              base_url="https://api.anthropic.com")
+                                              base_url="https://api.anthropic.com",
+                                              timeout=LLM_TIMEOUT_SECONDS, max_retries=LLM_SDK_RETRIES)
 
     def _parse(self, system: str, messages: list[dict], schema: type[BaseModel], effort: str) -> BaseModel:
         try:
@@ -162,7 +169,9 @@ def api_problem(e: anthropic.APIError) -> str:
         return "LLM API unavailable: the Anthropic API key was rejected"
     if isinstance(e, anthropic.RateLimitError):
         return "LLM API unavailable: rate limit reached, try again shortly"
-    if isinstance(e, (anthropic.APIConnectionError, anthropic.APITimeoutError)):
+    if isinstance(e, anthropic.APITimeoutError):
+        return f"LLM API unavailable: no answer within {LLM_TIMEOUT_SECONDS:.0f} seconds, try again"
+    if isinstance(e, anthropic.APIConnectionError):
         return "LLM API unavailable: no connection"
     return f"LLM API unavailable: {type(e).__name__}"
 

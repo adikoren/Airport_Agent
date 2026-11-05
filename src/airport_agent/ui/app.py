@@ -9,6 +9,8 @@ chronological order.
 
 from __future__ import annotations
 
+import faulthandler
+import signal
 import sys
 import uuid
 from pathlib import Path
@@ -16,6 +18,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import streamlit as st
+
+# Diagnostics: `kill -USR1 <pid>` writes the Python stack of every thread to the server log.
+faulthandler.register(signal.SIGUSR1, all_threads=True)
 
 from airport_agent.graph.builder import build, sqlite_checkpointer
 from airport_agent.ui.trace import build_trace
@@ -95,13 +100,20 @@ with reset_col:
 # Two-step submit: store the question and rerun, so the box is shown disabled while the agent works. Otherwise a
 # second question typed meanwhile would interrupt the running answer.
 busy = "pending" in st.session_state
+
+
+def queue_question() -> None:
+    """Runs once, when the form is submitted. The text is read here, not on later reruns, so it is queued only once."""
+    text = (st.session_state.get("question_box") or "").strip()
+    if text and "pending" not in st.session_state:
+        st.session_state.pending = text
+
+
 with st.form("ask", clear_on_submit=True, border=False):
-    typed = st.text_input("Question", placeholder="Working on your question…" if busy else "Ask about US airports…",
-                          disabled=busy, label_visibility="collapsed")
-    submitted = st.form_submit_button("Ask", disabled=busy)
-if (submitted or typed) and not busy and typed.strip():
-    st.session_state.pending = typed.strip()
-    st.rerun()
+    st.text_input("Question", key="question_box",
+                  placeholder="Working on your question…" if busy else "Ask about US airports…",
+                  disabled=busy, label_visibility="collapsed")
+    st.form_submit_button("Ask", disabled=busy, on_click=queue_question)
 
 if "pending" in st.session_state:
     text = st.session_state.pending
