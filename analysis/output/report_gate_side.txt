@@ -1,0 +1,61 @@
+Arrivals at the 105 airports: 6,464,527
+Airports with both measures: 105
+
+=== A. The two congestion measures ===
+                count  mean   std   min   10%   50%   90%    max
+runway_slope    105.0  2.56  2.99 -2.71 -0.34  1.93  7.44  10.15
+gate_slope      105.0  1.50  1.78 -1.20  0.05  0.99  3.56  12.26
+taxi_in_excess  105.0  1.04  1.41 -1.27 -0.04  0.77  2.50  10.53
+runway vs gate slope, Spearman: 0.03
+
+Top 12 by gate slope:
+                  code  passengers  gate_slope  taxi_in_excess  taxi_in_median  runway_slope
+ORIGIN_AIRPORT_ID                                                                           
+13930              ORD    42325511       12.26           10.53            18.0          8.17
+10849              BZN     1488618        6.75            5.36             5.0         -0.88
+13577              MYR     1670810        5.35            3.94             4.0          0.21
+10397              ATL    51112134        5.01            2.40             8.0          2.88
+10466              AZA     1040301        4.69            3.34             7.0          0.36
+12892              LAX    36039571        4.47            2.78             9.0          5.56
+11697              FLL    15585351        4.39            2.28             5.0          3.89
+15624              VPS     1253013        4.37            2.96             8.0          0.24
+14107              PHX    25378865        4.03            2.18             6.0         10.15
+14747              SEA    25314789        3.76            3.14            11.0          8.88
+11057              CLT    24680006        3.62            2.92            11.0          3.09
+13204              MCO    28112706        3.46            2.31             9.0          3.71 
+
+=== B. Each signal vs each congestion measure (Spearman rho; * = built from the same data) ===
+                    signal runway_slope gate_slope combined
+            taxi_in_excess        +0.00     +0.91*   +0.63*
+           taxi_out_median       +0.40*      +0.13   +0.36*
+               load_factor        +0.21      +0.23    +0.30
+         hours_at_capacity        +0.47      -0.05    +0.28
+              delay15_rate        +0.39      -0.00    +0.26
+            taxi_in_median        +0.23     +0.18*   +0.26*
+           peak_saturation        +0.43      -0.06    +0.24
+              taxi_out_p90       +0.26*      +0.00   +0.17*
+         months_lf_over_85        +0.04      +0.10    +0.11
+           nas_min_per_dep        +0.01      -0.00    +0.02
+           nas_cancel_rate        +0.07      -0.07    +0.02
+passengers_vs_seats_growth        +0.01      -0.03    -0.03
+                 nas_share        +0.04      -0.10    -0.04
+          gauge_vs_flights        +0.10      -0.15    -0.05 
+
+=== C. Agreement of each C ranking with each congestion measure (Spearman, bootstrap 90% interval) ===
+                       scheme      runway_slope          gate_slope          combined
+                 A plan today 0.47 [0.34, 0.59] -0.01 [-0.18, 0.16] 0.30 [0.15, 0.44]
+         B equal, raw taxi-in 0.50 [0.35, 0.62]  0.07 [-0.09, 0.24] 0.38 [0.24, 0.52]
+     C equal, cleaned taxi-in 0.51 [0.37, 0.63]   0.34 [0.17, 0.49] 0.58 [0.45, 0.69]
+D regression weights (part 1) 0.56 [0.43, 0.68]  0.01 [-0.16, 0.19] 0.38 [0.23, 0.51] 
+
+=== D. Is each scheme better than 'A plan today' on the combined measure? (bootstrap) ===
+B equal, raw taxi-in             diff=+0.09  90% interval [-0.03, +0.19]  share better=0.90
+C equal, cleaned taxi-in         diff=+0.28  90% interval [+0.17, +0.39]  share better=1.00
+D regression weights (part 1)    diff=+0.08  90% interval [-0.02, +0.18]  share better=0.90
+
+=== E. Rank agreement between schemes ===
+                               A plan today  B equal, raw taxi-in  C equal, cleaned taxi-in  D regression weights (part 1)
+A plan today                           1.00                  0.75                      0.71                           0.79
+B equal, raw taxi-in                   0.75                  1.00                      0.91                           0.95
+C equal, cleaned taxi-in               0.71                  0.91                      1.00                           0.89
+D regression weights (part 1)          0.79                  0.95                      0.89                           1.00

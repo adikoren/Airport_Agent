@@ -1,0 +1,47 @@
+# Scoring parameters. Every number here is listed, with its basis, in ARCHITECTURE.md §6.9.
+# A test checks that this file and the register stay in sync.
+
+horizon:
+  default_years: 5            # Published: FAA airport master planning periods (AC 150/5070-6B)
+  allowed_years: [5, 10, 20]  # Published: same source
+
+growth:
+  source: faa_taf             # Official: FAA Terminal Area Forecast
+  fallback_growth_per_year: 0.02   # Judgment: used only for airports with no FAA forecast (caveat added)
+
+constraint:
+  signals: [load_factor, peak_saturation, taxi_out_excess, taxi_in_excess]
+  weights:                    # Tested: equal weights (analysis findings parts 1-3)
+    load_factor: 0.25
+    peak_saturation: 0.25
+    taxi_out_excess: 0.25
+    taxi_in_excess: 0.25
+  scaling: percentile_rank    # Tested: analysis findings part 4
+  max_hour_percentile: 0.99   # Tested, sensitive: analysis findings part 6
+  busy_hour_min_utilization: 0.75   # Tested, safe: analysis findings part 6
+  quiet_hour_max_utilization: 0.25  # Tested, safe: analysis findings part 6
+
+checks:
+  min_flights_per_mean: 30    # Published: central-limit-theorem rule of thumb
+  load_factor_range: [0.0, 1.0]     # Definition
+  months_in_window: 12        # Definition
+
+hub_size:                     # Official: 49 U.S.C. 47102, share of total US enplanements
+  large: 0.01
+  medium: 0.0025
+  small: 0.0005               # below this: nonhub
+
+long_haul:
+  default: block_time
+  block_time_minutes: 360     # Published: IATA long-haul band starts at 6 h
+  distance_miles: 3000        # Published: threshold used by American Airlines
+  oag_reference_date: "2026-10-15"   # Definition: the one OAG schedule day used for long haul (stated in answers; cached)
+
+range:
+  bootstrap_resamples: 200    # Computation setting for the C range (more = more precise, not an assumption)
+  bootstrap_seed: 0           # Computation setting: fixed seed so a range is the same on every run
+  interval: [0.05, 0.95]      # Judgment: the 5th-95th percentile (a 90% interval), a common convention
+
+limits:
+  oag_calls_per_question: 200       # From the OAG plan: free tier = 10 records per call (docs/oag_notes.md)
+  max_explain_retries: 1            # Definition: one retry of explain, then the template answer

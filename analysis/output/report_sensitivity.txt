@@ -1,0 +1,10 @@
+departure cells: 615,900  arrival cells: 659,608
+              variant  airports without a value  rank agreement with base  airports moving > 5 places  largest move (places)  top-10 overlap with base  C vs congestion
+base: 99th pct, 75/25                         0                     1.000                           0                      0                        10             0.79
+     busy/quiet 70/30                         0                     0.985                          24                     17                        10             0.78
+     busy/quiet 80/20                         0                     0.984                          19                     27                         9             0.76
+     busy/quiet 85/15                         0                     0.923                          49                     56                         8             0.68
+     busy/quiet 65/35                         0                     0.976                          30                     25                         9             0.78
+     ceiling 95th pct                         0                     0.810                          75                     56                         9             0.64
+     ceiling 97th pct                         0                     0.879                          71                     52                         8             0.72
+  ceiling max (100th)                         0                     0.894                          58                     36                         9             0.78

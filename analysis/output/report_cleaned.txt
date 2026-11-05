@@ -1,0 +1,68 @@
+=== A. Cleaned signals: distribution ===
+                    count   mean    std    min    10%    50%    90%    max
+taxi_out_excess     105.0  1.923  2.265 -2.139 -0.261  1.190  5.229  9.658
+delay_excess        105.0 -0.045  0.081 -0.200 -0.147 -0.050  0.067  0.138
+taxi_out_excess_fe  105.0  0.738  2.088 -4.706 -1.362  0.464  3.944  6.736
+delay_excess_fe     105.0  0.045  0.043 -0.037  0.000  0.036  0.091  0.221 
+
+=== B. Raw vs cleaned, and simple vs within-hour version (Spearman) ===
+taxi_out_median    vs taxi_out_excess      rho=+0.46
+delay15_rate       vs delay_excess         rho=+0.30
+taxi_out_excess    vs taxi_out_excess_fe   rho=+0.67
+delay_excess       vs delay_excess_fe      rho=+0.28
+
+=== C. Examples ===
+      taxi_out_median  taxi_out_excess  delay15_rate  delay_excess  delay_excess_fe  taxi_in_excess
+code                                                                                               
+ORD              24.0            9.658         0.266         0.088            0.007          10.532
+LGA              22.0            9.222         0.240        -0.083            0.027           0.060
+SAN              20.0            5.751         0.256        -0.031            0.210           0.138
+SFO              20.0            6.916         0.241         0.043            0.131           0.691
+BOS              19.0            3.879         0.235        -0.151            0.060          -0.315
+PHX              15.0            6.546         0.233         0.003            0.005           2.184
+MCO              17.0            4.010         0.264         0.029            0.091           2.306
+HPN              13.0           -0.861         0.224        -0.190            0.024           0.288
+BZN              15.0           -0.172         0.197         0.138            0.075           5.362
+TUL              13.0           -0.416         0.172        -0.092            0.028           0.238
+MSP              16.0           -0.058         0.191        -0.011            0.013           0.198
+LAS              16.0            4.554         0.256        -0.028            0.071          -0.083 
+
+=== D. Each signal vs congestion (Spearman; * = built from the same data as that outcome) ===
+            signal runway_slope gate_slope combined
+   taxi_out_median       +0.40*      +0.13   +0.36*
+   taxi_out_excess       +0.94*      +0.05   +0.69*
+taxi_out_excess_fe       +0.71*      +0.09   +0.54*
+      delay15_rate        +0.39      -0.00    +0.26
+      delay_excess        +0.34      +0.30    +0.43
+   delay_excess_fe        +0.36      +0.11    +0.33
+    taxi_in_median        +0.23     +0.18*   +0.26*
+    taxi_in_excess        +0.00     +0.91*   +0.63*
+       load_factor        +0.21      +0.23    +0.30
+   peak_saturation        +0.43      -0.06    +0.24 
+
+=== E. Each C vs congestion (Spearman, bootstrap 90% interval) ===
+                                  scheme      runway_slope          gate_slope          combined
+                            A plan today 0.47 [0.34, 0.59] -0.01 [-0.18, 0.16] 0.30 [0.15, 0.44]
+C current pick (raw delay, raw taxi-out) 0.51 [0.37, 0.63]   0.34 [0.17, 0.49] 0.58 [0.45, 0.69]
+           E cleaned delay, raw taxi-out 0.46 [0.33, 0.58]   0.42 [0.26, 0.57] 0.60 [0.48, 0.71]
+           G raw delay, cleaned taxi-out 0.70 [0.60, 0.77]   0.32 [0.16, 0.48] 0.70 [0.61, 0.78]
+                           F all cleaned 0.62 [0.51, 0.71]   0.41 [0.26, 0.55] 0.71 [0.62, 0.79] 
+
+=== F. Difference vs 'C current pick' (bootstrap) ===
+E cleaned delay, raw taxi-out    runway_slope  diff=-0.04 [-0.12, +0.03] better in 16%
+E cleaned delay, raw taxi-out    gate_slope    diff=+0.08 [+0.02, +0.15] better in 98%
+E cleaned delay, raw taxi-out    combined      diff=+0.02 [-0.05, +0.10] better in 68%
+G raw delay, cleaned taxi-out    runway_slope  diff=+0.19 [+0.13, +0.26] better in 100%
+G raw delay, cleaned taxi-out    gate_slope    diff=-0.02 [-0.07, +0.03] better in 28%
+G raw delay, cleaned taxi-out    combined      diff=+0.12 [+0.06, +0.19] better in 100%
+F all cleaned                    runway_slope  diff=+0.11 [+0.03, +0.21] better in 99%
+F all cleaned                    gate_slope    diff=+0.07 [+0.00, +0.15] better in 95%
+F all cleaned                    combined      diff=+0.13 [+0.05, +0.23] better in 100%
+
+=== G. Rank agreement between schemes ===
+                                          A plan today  C current pick (raw delay, raw taxi-out)  E cleaned delay, raw taxi-out  G raw delay, cleaned taxi-out  F all cleaned
+A plan today                                      1.00                                      0.71                           0.63                           0.69           0.61
+C current pick (raw delay, raw taxi-out)          0.71                                      1.00                           0.89                           0.94           0.85
+E cleaned delay, raw taxi-out                     0.63                                      0.89                           1.00                           0.84           0.96
+G raw delay, cleaned taxi-out                     0.69                                      0.94                           0.84                           1.00           0.90
+F all cleaned                                     0.61                                      0.85                           0.96                           0.90           1.00

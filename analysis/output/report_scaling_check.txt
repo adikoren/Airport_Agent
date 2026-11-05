@@ -1,0 +1,15 @@
+--- 10-90 percentile, capped (tested): C vs combined congestion rho=0.74, values stuck at exactly 0 or 1: 88 of 420
+   median of each scaled signal: {'load_factor': 0.6, 'peak_saturation': 0.7, 'taxi_out_excess': 0.26, 'taxi_in_excess': 0.32}
+--- min-max, no caps: C vs combined congestion rho=0.64, values stuck at exactly 0 or 1: 8 of 420
+   median of each scaled signal: {'load_factor': 0.47, 'peak_saturation': 0.7, 'taxi_out_excess': 0.28, 'taxi_in_excess': 0.17}
+--- percentile rank: C vs combined congestion rho=0.79, values stuck at exactly 0 or 1: 4 of 420
+   median of each scaled signal: {'load_factor': 0.5, 'peak_saturation': 0.5, 'taxi_out_excess': 0.5, 'taxi_in_excess': 0.5}
+
+Most extreme airport per signal (min-max):
+  load_factor      max=0.86 (PGD), next=0.85 (SJU), median=0.79
+  peak_saturation  max=1.00 (HPN), next=0.97 (LIT), median=0.89
+  taxi_out_excess  max=9.66 (ORD), next=9.22 (LGA), median=1.19
+  taxi_in_excess   max=10.53 (ORD), next=5.36 (BZN), median=0.77
+
+percentile rank: rho=0.79, 90% interval [0.72, 0.85]
+gain over old capped scaling: +0.05, 90% interval [+0.02, +0.08], better in 100%

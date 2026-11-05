@@ -1,0 +1,19 @@
+# Metro / everyday names -> candidate airports (IATA codes).
+# More than one candidate = ambiguous: Claude picks from context, or the agent asks the user.
+# All airport-specific knowledge lives here, never in code.
+
+metro:
+  LA: [LAX, BUR, LGB, ONT, SNA]
+  Los Angeles: [LAX, BUR, LGB, ONT, SNA]
+  New York: [JFK, LGA, EWR]
+  NYC: [JFK, LGA, EWR]
+  Chicago: [ORD, MDW]
+  Washington DC: [DCA, IAD, BWI]
+  DC: [DCA, IAD, BWI]
+  Bay Area: [SFO, OAK, SJC]
+  Portland: [PDX, PWM]
+  Houston: [IAH, HOU]
+  Dallas: [DFW, DAL]
+  Orange County: [SNA]
+  Santa Ana: [SNA]
+  Hartford: [BDL]          # Bradley International is in Windsor Locks, CT

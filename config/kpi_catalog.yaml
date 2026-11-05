@@ -1,0 +1,47 @@
+# Metrics the agent can compute: id, unit, source priority (first = primary, then backup).
+# Last resort for anything the sources can't provide: an LLM web search (labeled unverified, never scored).
+# Request types map to the metrics they need.
+
+metrics:
+  passengers:
+    unit: passengers
+    sources: [bts_t100]
+  load_factor:
+    unit: share
+    sources: [bts_t100]
+  international_share:
+    unit: share
+    sources: [bts_t100]
+  growth_share:
+    unit: share
+    sources: [faa_taf]
+  peak_saturation:
+    unit: share
+    sources: [bts_ontime]
+  taxi_out_excess:
+    unit: minutes
+    sources: [bts_ontime]
+  taxi_in_excess:
+    unit: minutes
+    sources: [bts_ontime]
+  long_haul_share:
+    unit: share
+    sources: [oag_schedules, bts_ontime]
+  delay_rate:
+    unit: share
+    sources: [bts_ontime]
+  cancellation_rate:
+    unit: share
+    sources: [bts_ontime]
+  departures:
+    unit: flights
+    sources: [bts_t100]
+
+request_types:
+  rank: [passengers, load_factor, growth_share, peak_saturation, taxi_out_excess, taxi_in_excess, international_share]
+  explain_why: [passengers, load_factor, growth_share, peak_saturation, taxi_out_excess, taxi_in_excess, international_share]
+  compare: [load_factor, peak_saturation, taxi_out_excess, taxi_in_excess]
+  metric_lookup: []   # filled from the metrics the user names
+  research: []        # external facts: answered from web sources, never from the computed measures
+  methodology: []
+  out_of_scope: []

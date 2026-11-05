@@ -1,0 +1,3 @@
+# Three-letter words the grounding check must not treat as airport codes
+# (some are also real airport codes, e.g. USA = Concord, NC).
+acronyms_that_are_not_airports: [USA, FAA, TAF, BTS, OAG, IRR, NAS, RPS, LLM, API, CEO]

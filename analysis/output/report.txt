@@ -1,0 +1,173 @@
+T-100: 105 airports with >= 1,000,000 passengers and 24 complete months
+On-time: 6,458,740 departures at those airports, 12 monthly files
+Final table: 105 airports
+
+=== 1. Distribution of signals (p10 / p90 = candidate score anchors) ===
+                            count    mean    std     min     10%     50%     90%     max
+load_factor                 105.0   0.782  0.032   0.719   0.738   0.786   0.819   0.861
+peak_saturation             105.0   0.872  0.069   0.638   0.782   0.890   0.936   0.997
+nas_share                   105.0   0.210  0.045   0.093   0.146   0.208   0.270   0.297
+taxi_out_median             105.0  14.571  2.699  10.000  12.000  14.000  19.000  24.000
+gauge_vs_flights            105.0  -0.007  0.050  -0.119  -0.074  -0.002   0.049   0.128
+taxi_in_median              105.0   5.733  2.077   2.000   4.000   5.000   8.000  18.000
+taxi_out_p90                105.0  26.095  5.742  15.000  20.000  26.000  33.000  45.000
+nas_min_per_dep             105.0   3.227  1.009   0.723   2.035   3.234   4.473   5.385
+delay15_rate                105.0   0.209  0.036   0.134   0.170   0.203   0.263   0.317
+nas_cancel_rate             105.0   0.003  0.002   0.000   0.001   0.002   0.006   0.011
+hours_at_capacity           105.0   0.034  0.018   0.010   0.015   0.029   0.054   0.135
+months_lf_over_85           105.0   0.790  1.585   0.000   0.000   0.000   3.000   8.000
+passengers_vs_seats_growth  105.0  -0.007  0.021  -0.062  -0.034  -0.008   0.017   0.057
+congestion_slope            105.0   2.562  2.994  -2.708  -0.340   1.928   7.436  10.151
+slope_r2                    105.0   0.027  0.052   0.000   0.000   0.006   0.074   0.322 
+
+=== 2. Spearman correlation (redundancy check; |rho| > 0.7 = near-duplicate) ===
+                            load_factor  peak_saturation  nas_share  taxi_out_median  gauge_vs_flights  taxi_in_median  taxi_out_p90  nas_min_per_dep  delay15_rate  nas_cancel_rate  \
+load_factor                        1.00            -0.02       0.17             0.52             -0.09            0.40          0.44             0.27          0.23             0.05   
+peak_saturation                   -0.02             1.00       0.04             0.29              0.02            0.32          0.24            -0.03          0.14             0.07   
+nas_share                          0.17             0.04       1.00             0.24             -0.14            0.06          0.55             0.78         -0.04             0.45   
+taxi_out_median                    0.52             0.29       0.24             1.00             -0.21            0.54          0.74             0.30          0.30             0.18   
+gauge_vs_flights                  -0.09             0.02      -0.14            -0.21              1.00           -0.07         -0.21            -0.33         -0.02            -0.29   
+taxi_in_median                     0.40             0.32       0.06             0.54             -0.07            1.00          0.36             0.17          0.22             0.02   
+taxi_out_p90                       0.44             0.24       0.55             0.74             -0.21            0.36          1.00             0.62          0.17             0.47   
+nas_min_per_dep                    0.27            -0.03       0.78             0.30             -0.33            0.17          0.62             1.00          0.25             0.72   
+delay15_rate                       0.23             0.14      -0.04             0.30             -0.02            0.22          0.17             0.25          1.00             0.18   
+nas_cancel_rate                    0.05             0.07       0.45             0.18             -0.29            0.02          0.47             0.72          0.18             1.00   
+hours_at_capacity                  0.00             0.84       0.05             0.29              0.01            0.33          0.21             0.05          0.35             0.14   
+months_lf_over_85                  0.73            -0.16       0.25             0.20              0.03            0.16          0.29             0.28          0.08             0.09   
+passengers_vs_seats_growth         0.21            -0.09      -0.13            -0.06              0.35           -0.11         -0.23            -0.27          0.08            -0.33   
+congestion_slope                   0.21             0.43       0.04             0.40              0.10            0.23          0.26             0.01          0.39             0.07   
+
+                            hours_at_capacity  months_lf_over_85  passengers_vs_seats_growth  congestion_slope  
+load_factor                              0.00               0.73                        0.21              0.21  
+peak_saturation                          0.84              -0.16                       -0.09              0.43  
+nas_share                                0.05               0.25                       -0.13              0.04  
+taxi_out_median                          0.29               0.20                       -0.06              0.40  
+gauge_vs_flights                         0.01               0.03                        0.35              0.10  
+taxi_in_median                           0.33               0.16                       -0.11              0.23  
+taxi_out_p90                             0.21               0.29                       -0.23              0.26  
+nas_min_per_dep                          0.05               0.28                       -0.27              0.01  
+delay15_rate                             0.35               0.08                        0.08              0.39  
+nas_cancel_rate                          0.14               0.09                       -0.33              0.07  
+hours_at_capacity                        1.00              -0.12                       -0.08              0.47  
+months_lf_over_85                       -0.12               1.00                        0.16              0.04  
+passengers_vs_seats_growth              -0.08               0.16                        1.00              0.01  
+congestion_slope                         0.47               0.04                        0.01              1.00   
+
+near-duplicate pairs: [('load_factor', 'months_lf_over_85', 0.73), ('peak_saturation', 'hours_at_capacity', 0.84), ('nas_share', 'nas_min_per_dep', 0.78), ('taxi_out_median', 'taxi_out_p90', 0.74), ('nas_min_per_dep', 'nas_cancel_rate', 0.72)] 
+
+=== 3. PCA on standardised signals ===
+explained variance: [0.31 0.17 0.14 0.09 0.07 0.06]
+                             PC1   PC2   PC3
+load_factor                 0.21  0.50  0.16
+peak_saturation             0.15 -0.46  0.32
+nas_share                   0.30 -0.02 -0.39
+taxi_out_median             0.40  0.05  0.25
+gauge_vs_flights           -0.17  0.05  0.26
+taxi_in_median              0.26  0.06  0.40
+taxi_out_p90                0.45  0.03  0.01
+nas_min_per_dep             0.39  0.05 -0.34
+delay15_rate                0.18  0.02  0.29
+nas_cancel_rate             0.35 -0.10 -0.22
+hours_at_capacity           0.20 -0.32  0.34
+months_lf_over_85           0.11  0.53  0.03
+passengers_vs_seats_growth -0.16  0.36  0.26 
+
+=== 4. Congestion slope (extra taxi-out minutes, empty hour -> full hour) ===
+                  code  passengers  congestion_slope  slope_r2  taxi_in_median  load_factor  peak_saturation  nas_share
+ORIGIN_AIRPORT_ID                                                                                                      
+14107              PHX    25378865            10.151     0.289             6.0        0.794            0.936      0.156
+14100              PHL    14831720             9.892     0.079             7.0        0.799            0.925      0.208
+14679              SAN    13429500             9.866     0.114             4.0        0.797            0.887      0.215
+11278              DCA    12017675             9.491     0.076             5.0        0.752            0.943      0.200
+14908              SNA     5527071             9.344     0.122             5.0        0.797            0.881      0.248
+14771              SFO    26488605             9.234     0.140             6.0        0.821            0.887      0.221
+14747              SEA    25314789             8.880     0.131            11.0        0.818            0.926      0.228
+13930              ORD    42325511             8.170     0.027            18.0        0.803            0.937      0.205
+12953              LGA    15997215             8.141     0.013             7.0        0.804            0.946      0.283
+12889              LAS    25525953             7.625     0.070             6.0        0.790            0.902      0.187
+14635              RSW     5568001             7.464     0.051             4.0        0.802            0.774      0.227
+14057              PDX     9287434             7.394     0.322             4.0        0.816            0.949      0.241
+12264              IAD    13624560             6.957     0.100             7.0        0.803            0.925      0.278
+14986              SRQ     2277479             6.896     0.045             4.0        0.797            0.763      0.227
+11292              DEN    40276526             6.364     0.062             8.0        0.811            0.935      0.196
+...bottom 5
+                  code  passengers  congestion_slope  slope_r2  taxi_in_median  load_factor  peak_saturation  nas_share
+ORIGIN_AIRPORT_ID                                                                                                      
+15370              TUL     1651501            -0.921     0.001             4.0        0.722            0.808      0.198
+13487              MSP    17230016            -1.334     0.001             5.0        0.811            0.865      0.226
+11109              COS     1229404            -1.756     0.003             6.0        0.770            0.863      0.198
+15376              TUS     1885123            -1.933     0.009             4.0        0.770            0.809      0.208
+12197              HPN     1190842            -2.708     0.006             4.0        0.750            0.997      0.240 
+
+=== 5. Each signal alone vs congestion slope (Spearman rho, OLS R2) ===
+                    signal  rho   R2     p     note
+         hours_at_capacity 0.47 0.07 0.167         
+           peak_saturation 0.43 0.12 0.000         
+           taxi_out_median 0.40 0.27 0.000 circular
+              delay15_rate 0.39 0.13 0.000         
+              taxi_out_p90 0.26 0.13 0.000 circular
+            taxi_in_median 0.23 0.10 0.000         
+               load_factor 0.21 0.05 0.014         
+          gauge_vs_flights 0.10 0.00 0.822         
+           nas_cancel_rate 0.07 0.01 0.406         
+                 nas_share 0.04 0.00 0.598         
+         months_lf_over_85 0.04 0.00 0.902         
+           nas_min_per_dep 0.01 0.00 0.685         
+passengers_vs_seats_growth 0.01 0.00 0.924          
+
+=== 6. Multiple OLS: congestion_slope ~ standardised signals (robust p-values) ===
+--- current 5 without taxi-out: n=105, R2=0.22, adj R2=0.19
+                  coef_std      p
+peak_saturation      1.241  0.000
+load_factor          0.962  0.000
+gauge_vs_flights     0.099  0.685
+nas_share           -0.022  0.913
+
+--- all 13 without taxi-out: n=105, R2=0.38, adj R2=0.31
+                            coef_std      p
+nas_share                      1.367  0.009
+delay15_rate                   1.353  0.000
+load_factor                    1.344  0.002
+peak_saturation                0.758  0.016
+nas_cancel_rate                0.435  0.252
+taxi_in_median                 0.201  0.480
+gauge_vs_flights               0.053  0.852
+hours_at_capacity             -0.107  0.783
+passengers_vs_seats_growth    -0.269  0.438
+months_lf_over_85             -0.492  0.198
+nas_min_per_dep               -1.941  0.005
+
+=== 7. Reduced model (one signal per redundant group, no taxi-out) + bootstrap ===
+n=105, R2=0.31
+                 coef_std      p  boot_5%  boot_95%  share_boot_positive  implied_weight
+peak_saturation     1.091  0.000    0.609     1.549                1.000           0.382
+load_factor         0.710  0.006    0.329     1.170                1.000           0.249
+delay15_rate        0.854  0.001    0.515     1.341                1.000           0.299
+taxi_in_median      0.198  0.473   -0.432     0.615                0.741           0.070 
+
+=== 8. Does the weighting change the ranking? ===
+Spearman between C under each scheme and the congestion slope / each other:
+                                                 plan today (5 signals, 0.25/0.25/0.2/0.15/0.15)  equal, 5 recommended signals  regression-implied + taxi-out  slope
+plan today (5 signals, 0.25/0.25/0.2/0.15/0.15)                                             1.00                          0.75                           0.79   0.47
+equal, 5 recommended signals                                                                0.75                          1.00                           0.95   0.50
+regression-implied + taxi-out                                                               0.79                          0.95                           1.00   0.56
+slope                                                                                       0.47                          0.50                           0.56   1.00 
+
+Top 15 by 'equal, 5 recommended signals':
+                  code  plan today (5 signals, 0.25/0.25/0.2/0.15/0.15)  equal, 5 recommended signals  regression-implied + taxi-out  slope
+ORIGIN_AIRPORT_ID                                                                                                                          
+13930              ORD                                             0.70                          0.96                           0.96   8.17
+13303              MIA                                             0.82                          0.95                           0.94   5.99
+13204              MCO                                             0.79                          0.93                           0.92   3.71
+11298              DFW                                             0.71                          0.92                           0.91   5.41
+12478              JFK                                             0.98                          0.91                           0.89   2.30
+14747              SEA                                             0.87                          0.87                           0.84   8.88
+11292              DEN                                             0.73                          0.87                           0.86   6.36
+12953              LGA                                             0.90                          0.86                           0.89   8.14
+10721              BOS                                             0.92                          0.86                           0.87   4.93
+11618              EWR                                             0.91                          0.85                           0.81   0.35
+11057              CLT                                             0.67                          0.84                           0.81   3.09
+12266              IAH                                             0.78                          0.82                           0.78   5.38
+14100              PHL                                             0.71                          0.81                           0.83   9.89
+14771              SFO                                             0.78                          0.79                           0.82   9.23
+12892              LAX                                             0.81                          0.79                           0.76   5.56

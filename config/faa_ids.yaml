@@ -1,0 +1,14 @@
+# Airports whose IATA code differs from their FAA location identifier.
+# The reference build checks each pair against the FAA's own airport list (name and city)
+# and stops with an error if a pair doesn't match.
+iata_to_faa:
+  AZA: IWA   # Phoenix-Mesa Gateway
+  CLD: CRQ   # McClellan-Palomar, Carlsbad
+  FCA: GPI   # Glacier Park International, Kalispell
+  HHH: HXD   # Hilton Head
+  USA: JQF   # Concord-Padgett Regional
+  MQT: SAW   # Marquette Sawyer Regional
+  SCE: UNV   # State College
+  SPN: GSN   # Saipan
+  YUM: NYL   # Yuma International
+  GUF: JKA   # Gulf Shores

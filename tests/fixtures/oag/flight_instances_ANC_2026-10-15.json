@@ -1,0 +1,722 @@
+{
+  "data": [
+    {
+      "carrier": {
+        "iata": "K4",
+        "icao": "CKS"
+      },
+      "flightNumber": 982,
+      "flightType": "Unscheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC",
+          "faa": "ANC"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "00:00",
+          "utc": "08:00"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "HGH",
+          "icao": "ZSHC"
+        },
+        "country": {
+          "code": "CN"
+        },
+        "date": {
+          "local": "2026-10-16",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:47",
+          "utc": "17:47"
+        }
+      },
+      "elapsedTime": 0,
+      "aircraftType": {
+        "iata": "74Y",
+        "icao": "B744"
+      },
+      "serviceType": {},
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {},
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "statusKey": "a4bfe5f2caac3087cb4b53c80eefada70dddb281c1c4a5e4cfbffedb346470f5"
+    },
+    {
+      "carrier": {
+        "iata": "5Y",
+        "icao": "GTI"
+      },
+      "flightNumber": 538,
+      "flightType": "Unscheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC",
+          "faa": "ANC"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "00:14",
+          "utc": "08:14"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "MIA",
+          "icao": "KMIA",
+          "faa": "MIA"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "11:48",
+          "utc": "15:48"
+        }
+      },
+      "elapsedTime": 0,
+      "aircraftType": {
+        "iata": "74N",
+        "icao": "B748"
+      },
+      "serviceType": {},
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {},
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "statusKey": "2571fcbd16cb4e09792d482663fc6a9f2e838948ca60af2b5ec8dcf8f911f316"
+    },
+    {
+      "carrier": {
+        "iata": "AS",
+        "icao": "ASA"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 1380,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC"
+        },
+        "terminal": "S",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "00:31",
+          "utc": "08:31"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "SEA",
+          "icao": "KSEA"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "12:00"
+        }
+      },
+      "elapsedTime": 209,
+      "cargoTonnage": 5.2,
+      "aircraftType": {
+        "iata": "73G",
+        "icao": "B737"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 2326.0,
+        "accumulatedGreatCircleMiles": 1445.0,
+        "accumulatedGreatCircleNauticalMiles": 1256.0,
+        "greatCircleKilometers": 2326.0,
+        "greatCircleMiles": 1445.0,
+        "greatCircleNauticalMiles": 1256.0
+      },
+      "codeshare": {
+        "operatingAirlineDisclosure": {
+          "code": "",
+          "name": "ALASKA",
+          "number": "127X"
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "scheduleInstanceKey": "6fbe5ae70ad56e07b6412bac31a787e8f4ea37bc7a8938d8c3bcec932c9885e1",
+      "statusKey": "ba666c6ba116b384b39523be9864c9b095ec3fbf358c01f147701e1f67cb8569"
+    },
+    {
+      "carrier": {
+        "iata": "BR",
+        "icao": "EVA"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 646,
+      "sequenceNumber": 2,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:05",
+          "utc": "09:05"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "ORD",
+          "icao": "KORD"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "09:50",
+          "utc": "14:50"
+        }
+      },
+      "elapsedTime": 345,
+      "cargoTonnage": 103.9,
+      "aircraftType": {
+        "iata": "77X",
+        "icao": "B772"
+      },
+      "serviceType": {
+        "iata": "F"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 4568.0,
+        "accumulatedGreatCircleMiles": 2839.0,
+        "accumulatedGreatCircleNauticalMiles": 2467.0,
+        "greatCircleKilometers": 4568.0,
+        "greatCircleMiles": 2839.0,
+        "greatCircleNauticalMiles": 2467.0
+      },
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "scheduleInstanceKey": "3b2a88e6e3429c911a6e98c46c79c3e4986f1be995f20ebf705e79f26fc5c3c7",
+      "statusKey": "ed80d8db3d5bfaab823183817141dedc61eff47d7b8aa1fc1c0f3d2d2ddea4ec"
+    },
+    {
+      "carrier": {
+        "iata": "K4",
+        "icao": "CKS"
+      },
+      "flightNumber": 812,
+      "flightType": "Unscheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC",
+          "faa": "ANC"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:05",
+          "utc": "09:05"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "CGO",
+          "icao": "ZHCC"
+        },
+        "country": {
+          "code": "CN"
+        },
+        "date": {
+          "local": "2026-10-16",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "03:35",
+          "utc": "19:35"
+        }
+      },
+      "elapsedTime": 0,
+      "aircraftType": {
+        "iata": "74Y",
+        "icao": "B744"
+      },
+      "serviceType": {},
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {},
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "statusKey": "567135514a78e1080d64be3c884154bf7f32c5fd52a2af1a7b345280a230490d"
+    },
+    {
+      "carrier": {
+        "iata": "N8",
+        "icao": "NCR"
+      },
+      "flightNumber": 670,
+      "flightType": "Unscheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC",
+          "faa": "ANC"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:15",
+          "utc": "09:15"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "ORD",
+          "icao": "KORD",
+          "faa": "ORD"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "09:26",
+          "utc": "14:26"
+        }
+      },
+      "elapsedTime": 0,
+      "aircraftType": {
+        "iata": "77X",
+        "icao": "B772"
+      },
+      "serviceType": {},
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {},
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "statusKey": "43d8cfeb5f22c352481b82d24de107b6fbda7c621c52ab32fbc8e408336e2059"
+    },
+    {
+      "carrier": {
+        "iata": "CA"
+      },
+      "flightNumber": 3103,
+      "flightType": "Unscheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC",
+          "faa": "ANC"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:25",
+          "utc": "09:25"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "ORD",
+          "icao": "KORD",
+          "faa": "ORD"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "09:35",
+          "utc": "14:35"
+        }
+      },
+      "elapsedTime": 0,
+      "aircraftType": {
+        "iata": "77X",
+        "icao": "B772"
+      },
+      "serviceType": {},
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {},
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "statusKey": "b3fda4ae2200a12c693e0c14954841686017f02478ab2b9695e88086015d1f96"
+    },
+    {
+      "carrier": {
+        "iata": "QR",
+        "icao": "QTR"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 2007,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC"
+        },
+        "terminal": "S",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:31",
+          "utc": "09:31"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "SEA",
+          "icao": "KSEA"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "06:00",
+          "utc": "13:00"
+        }
+      },
+      "elapsedTime": 209,
+      "cargoTonnage": 9.68,
+      "aircraftType": {
+        "iata": "73G",
+        "icao": "B737"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 2326.0,
+        "accumulatedGreatCircleMiles": 1445.0,
+        "accumulatedGreatCircleNauticalMiles": 1256.0,
+        "greatCircleKilometers": 2326.0,
+        "greatCircleMiles": 1445.0,
+        "greatCircleNauticalMiles": 1256.0
+      },
+      "codeshare": {
+        "operatingAirlineDisclosure": {
+          "code": "",
+          "name": "ALASKA",
+          "number": "127Z"
+        },
+        "aircraftOwner": {
+          "code": "AS",
+          "name": ""
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [],
+        "operatingFlight": {
+          "code": "AS",
+          "serviceNumber": "1423",
+          "suffix": ""
+        }
+      },
+      "scheduleInstanceKey": "378a2798bdc9466a5fbfe1a9054f6de106d8af62c1d57d743898ecc239a656c4",
+      "statusKey": "215ee340f8600abc4b0f47621cd09e491c97de5c06c820bb628a18d0a833995f"
+    },
+    {
+      "carrier": {
+        "iata": "AS",
+        "icao": "ASA"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 1423,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC"
+        },
+        "terminal": "S",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:31",
+          "utc": "09:31"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "SEA",
+          "icao": "KSEA"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "06:00",
+          "utc": "13:00"
+        }
+      },
+      "elapsedTime": 209,
+      "cargoTonnage": 5.2,
+      "aircraftType": {
+        "iata": "73G",
+        "icao": "B737"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 2326.0,
+        "accumulatedGreatCircleMiles": 1445.0,
+        "accumulatedGreatCircleNauticalMiles": 1256.0,
+        "greatCircleKilometers": 2326.0,
+        "greatCircleMiles": 1445.0,
+        "greatCircleNauticalMiles": 1256.0
+      },
+      "codeshare": {
+        "operatingAirlineDisclosure": {
+          "code": "",
+          "name": "ALASKA",
+          "number": "127X"
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [
+          {
+            "code": "QR",
+            "serviceNumber": "2007",
+            "suffix": ""
+          }
+        ]
+      },
+      "scheduleInstanceKey": "70444378f9ac6813c6218b1070486e33279f09fc2e4fffc233d23f1c3712819c",
+      "statusKey": "215ee340f8600abc4b0f47621cd09e491c97de5c06c820bb628a18d0a833995f"
+    },
+    {
+      "carrier": {
+        "iata": "BR",
+        "icao": "EVA"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 692,
+      "sequenceNumber": 2,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "ANC",
+          "icao": "PANC"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:40",
+          "utc": "09:40"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "DFW",
+          "icao": "KDFW"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "10:40",
+          "utc": "15:40"
+        }
+      },
+      "elapsedTime": 360,
+      "cargoTonnage": 103.9,
+      "aircraftType": {
+        "iata": "77X",
+        "icao": "B772"
+      },
+      "serviceType": {
+        "iata": "F"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 4889.0,
+        "accumulatedGreatCircleMiles": 3038.0,
+        "accumulatedGreatCircleNauticalMiles": 2640.0,
+        "greatCircleKilometers": 4889.0,
+        "greatCircleMiles": 3038.0,
+        "greatCircleNauticalMiles": 2640.0
+      },
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "scheduleInstanceKey": "7400179b5bfc752b4aa3f53d9dd4842dc643320b790883d5a3ba75528a9abc50",
+      "statusKey": "fceb25e60b33e134e1d31fd3692ab9f2dbb9a1d1ade0c81f9d47ab978a2e0721"
+    }
+  ],
+  "paging": {
+    "limit": 10,
+    "totalCount": 488,
+    "totalPages": 49,
+    "next": "https://api.oag.com/flight-instances?DepartureDateTime=2026-10-15&DepartureAirport=ANC&CodeType=IATA&version=v2&Limit=10&After=D202610150140-1776278445655000000-7400179b5bfc752b4aa3f53d9dd4842dc643320b790883d5a3ba75528a9abc50"
+  }
+}

@@ -1,0 +1,53 @@
+# Fixed text used by code (never written by the model), so it cannot drift from the method.
+
+scope_reply: |
+  I can't do that part. Here is what I can help with:
+  - **Screening analysis of US commercial airports:** rankings, comparisons and single measures (passengers,
+    load factor, delays, forecast growth, congestion indicators) with their data period and limits.
+  - **Concepts:** what a measure, a term or a financial model means, and how it is calculated.
+  - **Published facts about a US airport** (ownership, history, planned projects, published budgets), with sources.
+  I don't project cash flows, returns or costs for a specific project, I don't recommend investments, and I don't
+  analyse non-US airports as the subject of a ranking or screening.
+
+rephrase_reply: |
+  I couldn't understand that request. Could you rephrase it? For example, name a state or region for a ranking,
+  name an airport for its measures, or ask what a term means.
+
+unknown_region_reply: |
+  "{region}" has no official definition I can use, so I don't want to guess which states you mean.
+  Which states should I include? (I know US states and the US Census Bureau regions and divisions.)
+
+example_questions: []   # no example buttons on the home page; the chat box is the only input
+
+disclaimer: "This is a screening signal, not investment advice."
+
+assumptions:
+  - "Forecast growth is the FAA's Terminal Area Forecast ({taf_edition}). It is a forecast and can be wrong; it is not a direct measure of unmet demand."
+  - "Airports the FAA doesn't forecast use a fallback growth of {fallback:.0%} a year (marked on each such airport)."
+  - "C is a relative index: how constrained an airport is compared with other US airports, from indirect indicators. It is not a measured share of demand that would be lost."
+  - "RPS is a screening index that combines forecast growth with the constraint indicators. It is not a measure of profitability, return on investment or the best renovation."
+  - "Peak throughput is what the airport has actually handled, not its certified or physical capacity."
+  - "Demand turned away today can't be counted from public data; full planes count through load factor."
+  - "Gate shortage is inferred indirectly, from busy-hour waits for a gate after landing; it is not a gate count."
+  - "Taxi and congestion indicators do not show that terminal expansion would remove the bottleneck."
+  - "Constraint indicators come from BTS on-time data: domestic flights of reporting airlines only."
+  - "Without project cost, revenue, feasibility and intervention data, profitability is not measured."
+
+methodology:
+  summary: >-
+    RPS = 100 × forecast growth over the horizon × C, a screening index for ranking airports. Forecast growth is the
+    FAA Terminal Area Forecast for the airport, relative to its size. C is the average of four indicators of
+    constraint, each converted to a percentile rank among US airports: load factor, peak saturation, cleaned taxi-out
+    (runway queue) and cleaned taxi-in (waiting for a gate). Airports are ranked by RPS, highest first.
+  why_product: >-
+    The index only rises where demand is forecast to grow AND the airport shows constraint indicators. With a product,
+    growth without constraint, or constraint without growth, scores low.
+  why_relative: >-
+    Growth is measured relative to the airport's size. That is a modelling choice that reduces the dominance of large
+    airports; it is not a proven return-on-investment measure.
+  why_no_spill: >-
+    Passengers turned away today can't be counted from public data; estimating them needs a "full" threshold that
+    drove the result, so full planes count through load factor instead.
+  why_not_profit: >-
+    RPS does not establish which renovation will be most profitable or the return per dollar invested. That needs
+    project cost, revenue, feasibility and intervention-specific data, which the agent does not have.

@@ -1,0 +1,18 @@
+=== [ne 0] Which airports in New England are strong candidates for terminal expansion?  (29s)
+nodes: understand_request → resolve_airports → get_data → compute_metrics → score_and_rank → prepare_results → explain → output_guard → respond
+counters: {'claude_calls': 2, 'api_calls': 0, 'explain_retries': 0} | guard problems: none | template: False
+=== [ne 1] Why is the first one first?  (32s)
+nodes: understand_request → prepare_results → web_context → explain → output_guard → respond
+counters: {'claude_calls': 3, 'api_calls': 0, 'explain_retries': 0} | guard problems: none | template: False
+=== [ne 2] And over a 10-year horizon?  (28s)
+nodes: understand_request → score_and_rank → prepare_results → explain → output_guard → respond
+counters: {'claude_calls': 2, 'api_calls': 0, 'explain_retries': 0} | guard problems: none | template: False
+=== [la 0] Compare LA and Santa Ana airport congestion levels.  (19s)
+nodes: understand_request → resolve_airports → disambiguate_airports → get_data → compute_metrics → prepare_results → explain → output_guard → respond
+counters: {'claude_calls': 3, 'api_calls': 0, 'explain_retries': 0} | guard problems: none | template: False
+=== [anc 0] What is the percentage of long haul flights out of Anchorage airport?  (16s)
+nodes: understand_request → resolve_airports → get_data → compute_metrics → prepare_results → explain → output_guard → respond
+counters: {'claude_calls': 2, 'api_calls': 0, 'explain_retries': 0} | guard problems: none | template: False
+=== [sfo 0] What is the unmet flight demand in SFO airport and why?  (48s)
+nodes: understand_request → resolve_airports → get_data → compute_metrics → score_and_rank → prepare_results → web_context → explain → output_guard → explain → output_guard → respond
+counters: {'claude_calls': 4, 'api_calls': 0, 'explain_retries': 1} | guard problems: ['numbers not in FACTS: 12'] | template: True

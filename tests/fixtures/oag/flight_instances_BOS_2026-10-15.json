@@ -1,0 +1,812 @@
+{
+  "data": [
+    {
+      "carrier": {
+        "iata": "OM",
+        "icao": "MGL"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 5811,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "E",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:45",
+          "utc": "05:45"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "HKG",
+          "icao": "VHHH"
+        },
+        "terminal": "1",
+        "country": {
+          "code": "HK"
+        },
+        "date": {
+          "local": "2026-10-16",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "21:00"
+        }
+      },
+      "elapsedTime": 915,
+      "cargoTonnage": 0.0,
+      "aircraftType": {
+        "iata": "351",
+        "icao": "A35K"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 12806.0,
+        "accumulatedGreatCircleMiles": 7957.0,
+        "accumulatedGreatCircleNauticalMiles": 6915.0,
+        "greatCircleKilometers": 12806.0,
+        "greatCircleMiles": 7957.0,
+        "greatCircleNauticalMiles": 6915.0
+      },
+      "codeshare": {
+        "operatingAirlineDisclosure": {
+          "code": "CX",
+          "name": "",
+          "number": "2"
+        },
+        "aircraftOwner": {
+          "code": "CX",
+          "name": ""
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [],
+        "operatingFlight": {
+          "code": "CX",
+          "serviceNumber": "811",
+          "suffix": ""
+        }
+      },
+      "scheduleInstanceKey": "7d572aff90b883e4248ce54e62cb1d859de4147fe0e85f349fe080b7ba86f698",
+      "statusKey": "e69d9e8c51c8d6f22059cc346bebb9ee52bedd8baeb1787c1a4e99d6d8ba9546"
+    },
+    {
+      "carrier": {
+        "iata": "MH",
+        "icao": "MAS"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 3346,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "E",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:45",
+          "utc": "05:45"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "HKG",
+          "icao": "VHHH"
+        },
+        "terminal": "1",
+        "country": {
+          "code": "HK"
+        },
+        "date": {
+          "local": "2026-10-16",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "21:00"
+        }
+      },
+      "elapsedTime": 915,
+      "cargoTonnage": 0.0,
+      "aircraftType": {
+        "iata": "351",
+        "icao": "A35K"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 12806.0,
+        "accumulatedGreatCircleMiles": 7957.0,
+        "accumulatedGreatCircleNauticalMiles": 6915.0,
+        "greatCircleKilometers": 12806.0,
+        "greatCircleMiles": 7957.0,
+        "greatCircleNauticalMiles": 6915.0
+      },
+      "codeshare": {
+        "operatingAirlineDisclosure": {
+          "code": "CX",
+          "name": "",
+          "number": "2"
+        },
+        "aircraftOwner": {
+          "code": "CX",
+          "name": ""
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [],
+        "operatingFlight": {
+          "code": "CX",
+          "serviceNumber": "811",
+          "suffix": ""
+        }
+      },
+      "scheduleInstanceKey": "e7c6dd96dd471f43cb7b5b1f2056c4b8dc381829916aecfec48106b2d177263b",
+      "statusKey": "e69d9e8c51c8d6f22059cc346bebb9ee52bedd8baeb1787c1a4e99d6d8ba9546"
+    },
+    {
+      "carrier": {
+        "iata": "CX",
+        "icao": "CPA"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 811,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "E",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "01:45",
+          "utc": "05:45"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "HKG",
+          "icao": "VHHH"
+        },
+        "terminal": "1",
+        "country": {
+          "code": "HK"
+        },
+        "date": {
+          "local": "2026-10-16",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "21:00"
+        }
+      },
+      "elapsedTime": 915,
+      "cargoTonnage": 0.0,
+      "aircraftType": {
+        "iata": "351",
+        "icao": "A35K"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 12806.0,
+        "accumulatedGreatCircleMiles": 7957.0,
+        "accumulatedGreatCircleNauticalMiles": 6915.0,
+        "greatCircleKilometers": 12806.0,
+        "greatCircleMiles": 7957.0,
+        "greatCircleNauticalMiles": 6915.0
+      },
+      "codeshare": {
+        "cockpitCrewEmployer": {
+          "code": "CX",
+          "name": "",
+          "number": "4"
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [
+          {
+            "code": "OM",
+            "serviceNumber": "5811",
+            "suffix": ""
+          },
+          {
+            "code": "MH",
+            "serviceNumber": "3346",
+            "suffix": ""
+          }
+        ]
+      },
+      "scheduleInstanceKey": "e5a6c64438639ab49cfae20bfc134395cd499053c6f5f82d4882777b285111f2",
+      "statusKey": "e69d9e8c51c8d6f22059cc346bebb9ee52bedd8baeb1787c1a4e99d6d8ba9546"
+    },
+    {
+      "carrier": {
+        "iata": "JL",
+        "icao": "JAL"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 7610,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "B",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "09:00"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "MIA",
+          "icao": "KMIA"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "08:27",
+          "utc": "12:27"
+        }
+      },
+      "elapsedTime": 207,
+      "cargoTonnage": 17.86,
+      "aircraftType": {
+        "iata": "738",
+        "icao": "B738"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 2028.0,
+        "accumulatedGreatCircleMiles": 1260.0,
+        "accumulatedGreatCircleNauticalMiles": 1095.0,
+        "greatCircleKilometers": 2028.0,
+        "greatCircleMiles": 1260.0,
+        "greatCircleNauticalMiles": 1095.0
+      },
+      "codeshare": {
+        "operatingAirlineDisclosure": {
+          "code": "AA",
+          "name": "",
+          "number": "2"
+        },
+        "aircraftOwner": {
+          "code": "AA",
+          "name": ""
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [],
+        "operatingFlight": {
+          "code": "AA",
+          "serviceNumber": "1418",
+          "suffix": ""
+        }
+      },
+      "scheduleInstanceKey": "eafaf70ee4b9740fa5ede2619a32020b398874c6bec8fcf178cf2ebafe0d87b5",
+      "statusKey": "84c06b1c87cd91615dcd57e31afa4f9828db9c93b32a4d7dbae9f3551eec7118"
+    },
+    {
+      "carrier": {
+        "iata": "WN",
+        "icao": "SWA"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 801,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "B",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "09:00"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "DEN",
+          "icao": "KDEN"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "07:30",
+          "utc": "13:30"
+        }
+      },
+      "elapsedTime": 270,
+      "cargoTonnage": 3.3,
+      "aircraftType": {
+        "iata": "7M8",
+        "icao": "B38M"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 2816.0,
+        "accumulatedGreatCircleMiles": 1750.0,
+        "accumulatedGreatCircleNauticalMiles": 1520.0,
+        "greatCircleKilometers": 2816.0,
+        "greatCircleMiles": 1750.0,
+        "greatCircleNauticalMiles": 1520.0
+      },
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "scheduleInstanceKey": "6eaecdba41065f4816631591152d81792cc27722262d4d2cd7be31c05f42dca3",
+      "statusKey": "7150fe8e5febb609c30ec3280435fdbc8e777ad9d7eb218eacd3d28e5010d368"
+    },
+    {
+      "carrier": {
+        "iata": "AA",
+        "icao": "AAL"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 1418,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "B",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "09:00"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "MIA",
+          "icao": "KMIA"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "08:27",
+          "utc": "12:27"
+        }
+      },
+      "elapsedTime": 207,
+      "cargoTonnage": 17.86,
+      "aircraftType": {
+        "iata": "738",
+        "icao": "B738"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 2028.0,
+        "accumulatedGreatCircleMiles": 1260.0,
+        "accumulatedGreatCircleNauticalMiles": 1095.0,
+        "greatCircleKilometers": 2028.0,
+        "greatCircleMiles": 1260.0,
+        "greatCircleNauticalMiles": 1095.0
+      },
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [
+          {
+            "code": "JL",
+            "serviceNumber": "7610",
+            "suffix": ""
+          }
+        ]
+      },
+      "scheduleInstanceKey": "33abcc141c6a2e0e0ad1f8579cbdccb0cf8c2ff0a140a891814c05e93424907e",
+      "statusKey": "84c06b1c87cd91615dcd57e31afa4f9828db9c93b32a4d7dbae9f3551eec7118"
+    },
+    {
+      "carrier": {
+        "iata": "5X",
+        "icao": "UPS"
+      },
+      "flightNumber": 9716,
+      "flightType": "Unscheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS",
+          "faa": "BOS"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "09:00"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "PHL",
+          "icao": "KPHL",
+          "faa": "PHL"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "06:08",
+          "utc": "10:08"
+        }
+      },
+      "elapsedTime": 0,
+      "aircraftType": {
+        "iata": "75F"
+      },
+      "serviceType": {},
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {},
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "statusKey": "72a4742b7535c1a461ed6aa8a305d360d85dd0b1471dd246ebb90fab795d786a"
+    },
+    {
+      "carrier": {
+        "iata": "B6",
+        "icao": "JBU"
+      },
+      "flightNumber": 8355,
+      "flightType": "Unscheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS",
+          "faa": "BOS"
+        },
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:00",
+          "utc": "09:00"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "JFK",
+          "icao": "KJFK",
+          "faa": "JFK"
+        },
+        "terminal": "5",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:51",
+          "utc": "09:51"
+        }
+      },
+      "elapsedTime": 0,
+      "aircraftType": {
+        "iata": "32Q",
+        "icao": "A21N"
+      },
+      "serviceType": {},
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {},
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "statusKey": "0ab202ef92dc003dce9c52380a9779e669fb138a343f871456ea488c803465f8"
+    },
+    {
+      "carrier": {
+        "iata": "WN",
+        "icao": "SWA"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 778,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "B",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:15",
+          "utc": "09:15"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "BNA",
+          "icao": "KBNA"
+        },
+        "terminal": "",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "07:00",
+          "utc": "12:00"
+        }
+      },
+      "elapsedTime": 165,
+      "cargoTonnage": 3.3,
+      "aircraftType": {
+        "iata": "7M8",
+        "icao": "B38M"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 1514.0,
+        "accumulatedGreatCircleMiles": 941.0,
+        "accumulatedGreatCircleNauticalMiles": 818.0,
+        "greatCircleKilometers": 1514.0,
+        "greatCircleMiles": 941.0,
+        "greatCircleNauticalMiles": 818.0
+      },
+      "codeshare": {
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": []
+      },
+      "scheduleInstanceKey": "2942c9a7efe48d32a0fcf67cba21a1e9bc397c095068748522d5750d7223bdb6",
+      "statusKey": "1fbcf6e3c173d56009d34072853a93dadb4c15e1766d3f873857c8e6d1ecf528"
+    },
+    {
+      "carrier": {
+        "iata": "BA",
+        "icao": "BAW"
+      },
+      "serviceSuffix": "",
+      "flightNumber": 6669,
+      "sequenceNumber": 1,
+      "flightType": "Scheduled",
+      "departure": {
+        "airport": {
+          "iata": "BOS",
+          "icao": "KBOS"
+        },
+        "terminal": "B",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "05:17",
+          "utc": "09:17"
+        }
+      },
+      "arrival": {
+        "airport": {
+          "iata": "DFW",
+          "icao": "KDFW"
+        },
+        "terminal": "0",
+        "country": {
+          "code": "US"
+        },
+        "date": {
+          "local": "2026-10-15",
+          "utc": "2026-10-15"
+        },
+        "time": {
+          "local": "08:34",
+          "utc": "13:34"
+        }
+      },
+      "elapsedTime": 257,
+      "cargoTonnage": 4.6,
+      "aircraftType": {
+        "iata": "321",
+        "icao": "A321"
+      },
+      "serviceType": {
+        "iata": "J"
+      },
+      "segmentInfo": {
+        "numberOfStops": 0,
+        "intermediateAirports": {
+          "iata": []
+        }
+      },
+      "distance": {
+        "accumulatedGreatCircleKilometers": 2509.0,
+        "accumulatedGreatCircleMiles": 1559.0,
+        "accumulatedGreatCircleNauticalMiles": 1355.0,
+        "greatCircleKilometers": 2509.0,
+        "greatCircleMiles": 1559.0,
+        "greatCircleNauticalMiles": 1355.0
+      },
+      "codeshare": {
+        "operatingAirlineDisclosure": {
+          "code": "AA",
+          "name": "",
+          "number": "2"
+        },
+        "aircraftOwner": {
+          "code": "AA",
+          "name": ""
+        },
+        "jointOperationAirlineDesignators": [],
+        "marketingFlights": [],
+        "operatingFlight": {
+          "code": "AA",
+          "serviceNumber": "2527",
+          "suffix": ""
+        }
+      },
+      "scheduleInstanceKey": "16cfd373ab93681185178cafccaab16e12d8d508f4e72687d8c7002de3bca708",
+      "statusKey": "d4533ade8ec79589cb295f7e4afff151541290ab1e0d526a7e42464cc7e2ba8d"
+    }
+  ],
+  "paging": {
+    "limit": 10,
+    "totalCount": 1769,
+    "totalPages": 177,
+    "next": "https://api.oag.com/flight-instances?DepartureDateTime=2026-10-15&DepartureAirport=BOS&CodeType=IATA&version=v2&Limit=10&After=D202610150517-1782659353116000000-16cfd373ab93681185178cafccaab16e12d8d508f4e72687d8c7002de3bca708"
+  }
+}

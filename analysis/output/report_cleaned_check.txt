@@ -1,0 +1,14 @@
+Mean delay_excess (busy minus quiet hours): -0.045 -> negative = quiet hours have MORE delays (late-evening build-up), i.e. time of day dominates
+delay15_rate vs taxi_out_excess rho: 0.36
+G raw delay, cleaned taxis            runway_slope=0.70 [0.60,0.77]  gate_slope=0.32 [0.16,0.48]  combined=0.70 [0.61,0.78]
+H within-hour delay, cleaned taxis    runway_slope=0.68 [0.58,0.76]  gate_slope=0.41 [0.24,0.56]  combined=0.76 [0.67,0.82]
+I no delay rate (4 signals)           runway_slope=0.67 [0.57,0.75]  gate_slope=0.40 [0.24,0.55]  combined=0.74 [0.65,0.81]
+H within-hour delay, cleaned taxis vs G on combined: diff=+0.05 [-0.01,+0.12]
+I no delay rate (4 signals) vs G on combined: diff=+0.04 [-0.02,+0.09]
+rank agreement:
+                                     G raw delay, cleaned taxis  ...  I no delay rate (4 signals)
+G raw delay, cleaned taxis                                1.00  ...                         0.92
+H within-hour delay, cleaned taxis                        0.88  ...                         0.94
+I no delay rate (4 signals)                               0.92  ...                         1.00
+
+[3 rows x 3 columns]
